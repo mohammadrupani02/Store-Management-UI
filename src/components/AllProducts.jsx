@@ -34,7 +34,7 @@ const AllProducts = () => {
       {!loading && productsList.length === 0 ? (
         <p className="flex justify-center m-auto text-lg text-gray-600 gap-1">
           No Product Added!
-          <Link to="add-product" className="text-blue-600 hover:underline">
+          <Link to="/home/add-product" className="text-blue-600 hover:underline">
             add product
           </Link>
         </p>
