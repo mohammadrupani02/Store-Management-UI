@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./components/AboutUs";
@@ -22,11 +22,15 @@ function App() {
       </Route>
 
       <Route path="/home" element={<HomePage />}>
-        <Route index element={<AllProducts />} />
+        <Route index element={<Navigate to="all-products" replace />} />
+        <Route path="all-products" element={<AllProducts />} />
         <Route path="add-product" element={<AddProduct />} />
         <Route path="cart" element={<Cart />} />
         <Route path="cart/customer-details" element={<CustomerDetails />} />
-        <Route path="cart/customer-details/order-invoice" element={<OrderInvoice />} />
+        <Route
+          path="cart/customer-details/order-invoice"
+          element={<OrderInvoice />}
+        />
         <Route path="order-history" element={<OrderHistory />} />
       </Route>
     </Routes>
