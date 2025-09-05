@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [active, setActive] = useState("All Products");
-  const handler = (text) => {
-    setActive(text);
-  };
+  // const [active, setActive] = useState("All Products");
+  // const handler = (text) => {
+  //   setActive(text);
+  // };
+  const location = useLocation();
+  let active;
+
+  if (location.pathname.includes("add-product")) active = "Add Product";
+  else if (location.pathname.includes("cart")) active = "Cart";
+  else if (location.pathname.includes("order-history")) active = "Order History";
+  else active = "All Products";
 
   return (
     <div className="h-screen w-[15%] shadow-lg">
       <div className="flex flex-col text-lg font-medium p-4 space-y-3">
         <Link
-          onClick={() => handler("All Products")}
+          // onClick={() => handler("All Products")}
           to=""
           className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
             active === "All Products" ? "text-blue-600" : "text-stone-600"
@@ -20,7 +26,7 @@ const Sidebar = () => {
           All Products
         </Link>
         <Link
-          onClick={() => handler("Add Product")}
+          // onClick={() => handler("Add Product")}
           to="add-product"
           className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
             active === "Add Product" ? "text-blue-600" : "text-stone-600"
@@ -29,7 +35,7 @@ const Sidebar = () => {
           Add Product
         </Link>
         <Link
-          onClick={() => handler("Cart")}
+          // onClick={() => handler("Cart")}
           to="cart"
           className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
             active === "Cart" ? "text-blue-600" : "text-stone-600"
@@ -38,7 +44,7 @@ const Sidebar = () => {
           Cart
         </Link>
         <Link
-          onClick={() => handler("Order History")}
+          // onClick={() => handler("Order History")}
           to="order-history"
           className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
             active === "Order History" ? "text-blue-600" : "text-stone-600"
