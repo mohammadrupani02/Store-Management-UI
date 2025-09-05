@@ -59,7 +59,7 @@ const Invoice = () => {
           </tbody>
         </table>
 
-        <p className="text-sm text-gray-600 mt-4">Visit Again, Thank you!</p>
+        <p className="text-sm text-gray-600 mt-4">Do Visit Again, Thank you!</p>
       </div>
       <div className="flex justify-center mt-4">
         <Link to={"/home"} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
