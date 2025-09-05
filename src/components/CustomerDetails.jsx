@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createOrder } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { cartAction } from "../store/redux-store";
+import { cartAction, productsAction } from "../store/redux-store";
 
 const CustomerDetails = () => {
   const cust_name = useRef();
@@ -45,6 +45,7 @@ const CustomerDetails = () => {
         cust_name.current.value = "";
         phoneNumber.current.value = "";
       }, 1000);
+      dispatch(productsAction.clearProducts())
       dispatch(cartAction.clearCart())
     } else {
       toast.error("Something went wrong!");
