@@ -10,16 +10,17 @@ const Sidebar = () => {
 
   if (location.pathname.includes("add-product")) active = "Add Product";
   else if (location.pathname.includes("cart")) active = "Cart";
-  else if (location.pathname.includes("order-history")) active = "Order History";
+  else if (location.pathname.includes("order-history"))
+    active = "Order History";
   else active = "All Products";
 
   return (
-    <div className="h-screen w-[15%] shadow-lg">
-      <div className="flex flex-col text-lg font-medium p-4 space-y-3">
+    <div className="md:h-screen md:w-[15%] w-full shadow-lg">
+      <div className="flex md:flex-col flex-row gap-4 text-lg font-medium p-4 md:space-y-3 overflow-x-auto">
         <Link
           // onClick={() => handler("All Products")}
           to=""
-          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
+          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 flex-shrink-0 transition ${
             active === "All Products" ? "text-blue-600" : "text-stone-600"
           }`}
         >
@@ -28,7 +29,7 @@ const Sidebar = () => {
         <Link
           // onClick={() => handler("Add Product")}
           to="add-product"
-          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
+          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 flex-shrink-0 transition ${
             active === "Add Product" ? "text-blue-600" : "text-stone-600"
           }`}
         >
@@ -37,7 +38,7 @@ const Sidebar = () => {
         <Link
           // onClick={() => handler("Cart")}
           to="cart"
-          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
+          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 flex-shrink-0 transition ${
             active === "Cart" ? "text-blue-600" : "text-stone-600"
           }`}
         >
@@ -46,7 +47,7 @@ const Sidebar = () => {
         <Link
           // onClick={() => handler("Order History")}
           to="order-history"
-          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 transition ${
+          className={`px-3 py-2 rounded-lg hover:bg-gray-200 border-b-2 flex-shrink-0 transition ${
             active === "Order History" ? "text-blue-600" : "text-stone-600"
           }`}
         >

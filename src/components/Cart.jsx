@@ -11,8 +11,8 @@ const Cart = () => {
     0
   );
   return (
-    <div className="ml-1 flex flex-col flex-1 p-6">
-      <h1 className="bg-white z-10 text-3xl font-bold text-blue-700 border-b-2 border-gray-200 pb-4 mb-6">
+    <div className="ml-1 flex flex-col flex-1 sm:p-6 p-3">
+      <h1 className="bg-white z-10 sm:text-3xl text-2xl font-bold text-blue-700 border-b-2 border-gray-200 pb-4 mb-6">
         🛒 Shopping Cart
       </h1>
 
@@ -67,13 +67,13 @@ const Cart = () => {
         )}
       </div>
 
-      <div className="sticky bottom-2 w-full mb-8 mt-8 p-6 bg-gray-50 rounded-2xl border border-gray-200 shadow-sm flex justify-between items-center">
-        <span className="text-lg font-bold text-gray-800">Total Price</span>
-        <span className="text-2xl font-bold text-blue-600">
+      <div className="sticky bottom-2 w-full mb-8 mt-8 sm:p-6 p-2 bg-gray-50 rounded-2xl border border-gray-200 shadow-sm flex justify-between items-center">
+        <span className="sm:text-lg text-sm font-bold text-gray-800">Total Price</span>
+        <span className="sm:text-2xl text-xl font-bold text-blue-600">
           ₹ {total.toFixed(2)}
           <Link
             to="customer-details"
-            className="ml-2 text-2xl px-6 py-1 bg-yellow-300 hover:bg-yellow-400 text-stone-800 rounded-lg shadow transition-colors"
+            className="ml-2 sm:text-2xl text-xl px-6 py-1 bg-yellow-300 hover:bg-yellow-400 text-stone-800 rounded-lg shadow transition-colors"
           >
             Next
           </Link>

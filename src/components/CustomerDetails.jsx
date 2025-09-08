@@ -45,14 +45,14 @@ const CustomerDetails = () => {
         cust_name.current.value = "";
         phoneNumber.current.value = "";
       }, 1000);
-      dispatch(productsAction.clearProducts())
-      dispatch(cartAction.clearCart())
+      dispatch(productsAction.clearProducts());
+      dispatch(cartAction.clearCart());
     } else {
       toast.error("Something went wrong!");
     }
   };
   return (
-    <div className="w-[40%] bg-white shadow-lg m-auto rounded-2xl mt-8 p-6">
+    <div className="md:w-[50%] sm:w-[80%] w-[95%] bg-white shadow-lg m-auto rounded-2xl mt-8 p-6">
       <h1 className="bg-white text-3xl font-bold text-blue-700 border-b-2 border-gray-200 pb-4 mb-6">
         Customer Details
       </h1>

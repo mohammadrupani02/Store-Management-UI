@@ -61,7 +61,7 @@ const Invoice = () => {
 
         <p className="text-sm text-gray-600 mt-4">Do Visit Again, Thank you!</p>
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4 mb-2">
         <Link to={"/home"} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
           Home
         </Link>
