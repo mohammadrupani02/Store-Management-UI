@@ -16,7 +16,7 @@ It allows managing products, handling customers, generating invoices, and viewin
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend:** React.js, Axios, CSS / Tailwind (update based on what you used)  
+- **Frontend:** React.js, Axios, CSS / Tailwind
 - **Backend:** Not included in this repository  
 
 ---
