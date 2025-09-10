@@ -2,9 +2,12 @@ import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginStore } from "../api/api";
 import { BiLoaderAlt } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { productsAction } from "../store/redux-store";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const email = useRef();
   const password = useRef();
   const [error, setError] = useState();
@@ -52,6 +55,7 @@ const Login = () => {
       setLoading(false);
       return;
     }
+    dispatch(productsAction.clearProducts())
     setLoading(false);
     navigate("/home");
     email.current.value = "";
