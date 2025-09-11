@@ -13,6 +13,13 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="bg-stone-100 rounded-xl shadow-md hover:shadow-2xl transition-shadow duration-300 p-4 cursor-pointer flex flex-col justify-between border border-gray-100 truncate">
+      <div className="flex items-center justify-center w-full h-36 mb-2 bg-white rounded-lg overflow-hidden">
+        <img
+          src={product.imageUrl}
+          alt={product.productName}
+          className="object-contain w-full h-full"
+        />
+      </div>
       <h1 className="text-xl font-bold text-gray-800 mb-3 truncate border-b-2 border-black">
         {product.productName}
       </h1>

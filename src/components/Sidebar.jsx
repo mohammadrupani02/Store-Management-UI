@@ -16,7 +16,7 @@ const Sidebar = () => {
 
   return (
     <div className="md:h-screen md:w-[15%] w-full shadow-lg">
-      <div className="flex md:flex-col flex-row gap-4 text-lg font-medium p-4 md:space-y-3 overflow-x-auto">
+      <div className="flex md:flex-col flex-row md:gap-0.5 gap-4 text-lg font-medium p-4 md:space-y-3 overflow-x-auto">
         <Link
           // onClick={() => handler("All Products")}
           to=""

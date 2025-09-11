@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { addToInventory } from "../api/api";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -10,12 +10,34 @@ const AddProduct = () => {
   const productCP = useRef();
   const productSP = useRef();
   const productQuantity = useRef();
+  const imgRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [imagePreview, setImagePreview] = useState();
 
   const addProduct = async (payload) => {
     const response = await addToInventory(payload);
     return { ok: true, data: response };
+  };
+
+  const imageHandler = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.includes("image/")) {
+      alert("Only Image files are supported");
+      e.target.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => setImagePreview(reader.result);
+    reader.readAsDataURL(file);
+  };
+
+  const clearImage = () => {
+    setImagePreview(null);
+    imgRef.current.value = "";
   };
 
   const submitHandler = async (e) => {
@@ -26,21 +48,24 @@ const AddProduct = () => {
     const cp = productCP.current.value.trim();
     const sp = productSP.current.value.trim();
     const quantity = productQuantity.current.value.trim();
+    const file = imgRef.current.files[0];
 
     if (!category || !product || !cp || !sp || !quantity) {
       alert("Enter all fields");
       return;
     }
 
-    const productDetails = {
-      categoryName: category,
-      productName: product,
-      productPerUnitCostPrice: cp,
-      productPerUnitSellPrice: sp,
-      productQuantity: quantity,
-    };
+    const formData = new FormData();
+    formData.append("categoryName", category);
+    formData.append("productName", product);
+    formData.append("productPerUnitCostPrice", cp);
+    formData.append("productPerUnitSellPrice", sp);
+    formData.append("productQuantity", quantity);
+    if (file) {
+      formData.append("image", file);
+    }
 
-    const result = await addProduct(productDetails);
+    const result = await addProduct(formData);
 
     if (result.ok) {
       dispatch(productsAction.clearProducts());
@@ -52,6 +77,7 @@ const AddProduct = () => {
     productCP.current.value = "";
     productSP.current.value = "";
     productQuantity.current.value = "";
+    clearImage();
   };
 
   return (
@@ -64,6 +90,39 @@ const AddProduct = () => {
         onSubmit={submitHandler}
         className="md:w-[60%] w-[80%] flex flex-col gap-4 mx-auto"
       >
+        <div className="relative flex-1 border-2 rounded-md p-2 flex items-center justify-between ">
+          <input
+            ref={imgRef}
+            type="file"
+            className="hidden"
+            onChange={imageHandler}
+            id="fileInput"
+          />
+          {!imagePreview && (
+            <label
+              htmlFor="fileInput"
+              className="cursor-pointer bg-stone-200 text-black px-3 py-1 rounded-md hover:bg-stone-400"
+            >
+              Choose Product Image
+            </label>
+          )}
+          {imagePreview && (
+            <div className="flex items-center gap-1">
+              <img
+                src={imagePreview}
+                alt="preview"
+                className="w-24 h-24 border rounded object-cover"
+              />
+              <button
+                type="button"
+                onClick={clearImage}
+                className="bg-red-500 text-white text-xs px-2 py-1 rounded"
+              >
+                ✕
+              </button>
+            </div>
+          )}
+        </div>
         <input
           ref={categoryName}
           type="text"
